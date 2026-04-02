@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Linear+A&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>MagicWebsite</title>
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #1e1e1e;
+      color: white;
+      font-family: 'Noto Sans Linear A', sans-serif;
+      text-align: center;
+    }
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      width: 5px;
+      height: 100%;
+      background: cyan;
+      box-shadow: 
+      0 0 20px,
+      0 0 28px;
+      z-index: 0;
+      transition: 0.3s;
+    }
+    body::before {
+      left: 0;
+    }
+    body::after {
+      right: 0;
+    }
+    h1 {
+      font-size: 70px;
+      font-weight: 800;
+    }
+    .cardone {
+      background: #2c2c2c;
+      padding: 50px;
+      margin: 50px auto;
+      height: 300px;
+      width: 500px;
+      border-radius: 67px;
+      border:3px solid cyan;
+      transition: 0.3s;
+      box-shadow:
+        0 0 10px cyan,
+        0 0 20px rgba(0,255,255,0.5);
+    }
+    .cardone:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+    box-shadow:
+      0 0 25px cyan;
+    }
+
+    img {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid cyan;
+      box-shadow:
+        0 0 10px cyan,
+        0 0 25px cyan,
+        0 0 35px cyan,
+        0 0 50px rgba(0,255,255,0.5);
+      transition: 0.3s;
+    }
+  
+    img:hover {
+      transform: scale(1.2);
+      box-shadow:
+        0 0 20px cyan,
+        0 0 30px cyan,
+        0 0 40px cyan;
+    }
+    a {
+      color: cyan;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+    .btn {
+      background-color: #2c2c2c;
+      color: cyan;
+      display: block;
+      border: 2px solid cyan;
+      padding: 20px 35px;
+      font-size: 50px;
+      font-weight: 670;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 20px auto;
+   }  
+    .btn:hover {
+      background-color: cyan;
+      color: black;
+      box-shadow: 
+        0 0 10px cyan,
+        0 0 20px cyan,
+        0 0 30px cyan;
+      transform: scale(1.05);
+    }
+     .akira {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) translateY(-50px);
+      opacity: 0;
+      transition: opacity 0.5s, transform 0.5s;
+      pointer-events: none;
+      font-size: 40px;
+      font-weight: 600;
+      background-color: #2c2c2c;
+      color: #FFFFFF;
+      padding: 30px 40px;
+      border: 2px solid cyan;
+      border-radius: 15px;
+      box-shadow: 0 0 15px cyan;
+      width: 600px;
+      margin: 20px auto;
+      text-align: center; 
+      z-index: 999;
+    }
+
+    .akira.show  {
+      opacity: 1;
+      transform: translate(-50%, -50%) translateY(0);
+      pointer-events: auto;
+    }
+    .AkiraCloseBtn {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: transparent;
+      border: 2px solid cyan;
+      color: cyan;
+      padding: 5px 15px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .AkiraCloseBtn:hover {
+      background: cyan;
+      color: black;
+      box-shadow:
+        0 0 10px cyan,
+       0 0 20px cyan;
+    }
+    .akiraContainer {
+      transform-origin: top center;
+      max-width: 625px;
+      margin: 0 auto;
+      height: 1230px;
+      padding: 20px;
+      border: 2px solid rgb(0, 0, 0);  
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 25px;
+    }
+    @media (min-width: 1024px) {
+      .akiraContainer {
+        transform: scale(0.65);
+    }
+  }
+      body {
+        margin: 0 auto;
+         height: 100vh;
+    }
+
+  </style>
+</head>
+
+<body>
+<div class="akiraContainer"> 
+  
+  <div class="cardone">
+    <img src="https://cdn.phototourl.com/free/2026-04-02-698eefaa-a75a-421c-9db4-a8749ca0c668.jpg">
+    <h1>你吃飽沒</h1>
+  </div>
+  
+  <button class="btn" onclick="AkiraBox('box1')">猜猜我是誰</button>
+  <button class="btn" onclick="AkiraBox('box2')">有種你點開</button>
+  
+  <script>
+     function AkiraBox(boxId) {
+  const allBoxes = document.querySelectorAll('.akira');
+  allBoxes.forEach(box => {
+    if (box.id === boxId) {
+      box.classList.toggle('show');
+    } else {
+      box.classList.remove('show');
+    }
+  });
+}
+  </script>
+  <script>
+    function closeBox() {
+  document.querySelectorAll('.akira').forEach(box => {
+    box.classList.remove('show');
+  });
+}
+  </script>
+  
+  <div id="box1" class="akira">
+  <button class="AkiraCloseBtn" onclick="closeBox()">✕</button>
+    我是你爹  
+  </div>
+  
+  <div id="box2" class="akira">
+  <button class="AkiraCloseBtn" onclick="closeBox()">✕</button>
+    你打開看屁喔
+  </div>
+</div>
+
+</body>
+</html>
